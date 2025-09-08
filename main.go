@@ -226,7 +226,7 @@ func main() {
 	debugResponse := getBoolEnv(gatewayDebugEnvironmentVariable, false)
 
 	configID := uint8(getUintEnv(configurationIdEnvironmentVariable, 0))
-	config, err := ohttp.NewConfigFromSeed(configID, hpke.KEM_X25519_KYBER768_DRAFT00, hpke.KDF_HKDF_SHA256, hpke.AEAD_AES128GCM, seed)
+	config, err := ohttp.NewConfigFromSeed(configID, hpke.KEM_X25519_HKDF_SHA256, hpke.KDF_HKDF_SHA256, hpke.AEAD_AES128GCM, seed)
 	if err != nil {
 		slog.Error("Failed to create gateway configuration from seed", "error", err)
 		os.Exit(1)
